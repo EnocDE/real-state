@@ -1,0 +1,78 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.propiedades {
+    margin-top: 5rem;
+    @include m.tablet {
+        margin-top: 10rem;
+    }
+
+    &__heading {
+        @include m.heading;
+    }
+
+    &__grid {
+        @include m.grid(1, 2rem);
+        @include m.tablet {
+            @include m.grid(2, 2rem);
+        }
+        @include m.desktop {
+            @include m.grid(3, 2rem);
+        }
+    }
+}
+
+.propiedad {
+
+    background-color: v.$blanco;
+
+    &__imagen {
+        aspect-ratio: 9 / 6;
+        background-repeat: no-repeat;
+        background-position: center, center;
+        background-size: auto 150%;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    @for $i from 1 through 6 {
+        &:nth-child(#{$i}) &__imagen  {
+            background-image: linear-gradient(to bottom, transparent 50%, transparentize(v.$negro, .3) 100%), image-set(
+                url("../img/propiedad_#{$i}.avif") type("image/avif"),
+                url("../img/propiedad_#{$i}.webp") type("image/webp"),
+                url("../img/propiedad_#{$i}.jpg") type("image/jpg")
+            );
+        }
+    }
+
+    &__nombre {
+        padding: 1rem;
+        color: v.$blanco;
+        @include m.tablet {
+            font-size: 2.4rem;
+        }
+    }
+
+    &__contenido {
+        padding: 2rem;
+    }
+
+    &__texto {
+        margin-bottom: 0;
+    }
+
+    &__precio {
+        font-size: 3rem;
+        margin: 0;
+    }
+
+    &__enlace {
+        @include m.boton(v.$primario, v.$blanco);
+        display: block;
+
+        @include m.tablet {
+            margin: 2rem auto 0 auto;
+            width: auto;
+        }
+    }
+}
