@@ -6,6 +6,7 @@ Página web para la venta de casas
 ### Tecnologías
 - HTML
 - CSS
+- SASS
 
 ### Instalación 
 1. Clona el repositorio `git clone https://github.com/EnocDE/real-state.git`
